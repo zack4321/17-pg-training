@@ -78,6 +78,7 @@ input[type='file'] {
   font-size: 14px;
   color: #FFFFFF;
   cursor: pointer;
+  margin: 10px;
 }
 
 textarea {
@@ -139,7 +140,7 @@ textarea {
   margin:0;
 }
 .toot-container ul li {
-  border-bottom: 1px solid #fff;
+  border-bottom: 1px solid #393f4f;
   padding: 20px;
 
   display: flex;
@@ -160,4 +161,8 @@ textarea {
 
 .tootsimage{
   width:100%;
+}
+
+.link_color{
+  color: white;
 }

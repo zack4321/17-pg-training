@@ -35,6 +35,7 @@ $toots = $database->query("
                     <input type="file" name="image">
                     <div class="toot-button-container">
                         <input type="submit" class="toot-button" value="トゥート!">
+                        <a class="link_color" href="/icon.php">アイコンを変える</a>
                     </div>
                 </form>
             </div>
@@ -51,7 +52,11 @@ $toots = $database->query("
                     ")->fetch(PDO::FETCH_ASSOC);
                     ?>
                   <li>
-                    <img width="50" src="https://files.slack.com/files-tmb/T02541Q7U-F55EULAEB-5f5a012488/image_uploaded_from_ios_1024.jpg"/>
+                    <?php if ($user['icon_url']){ ?>
+                      <img width="50" src="/uploaded_image/user_image/<?php echo $user['icon_url'];?>" >
+                    <?php } else{ ?>
+                      <img width="50" src="https://files.slack.com/files-tmb/T02541Q7U-F55EULAEB-5f5a012488/image_uploaded_from_ios_1024.jpg" >
+                    <?php }?>
                     <div>
                       <div class="user-container">
                         <div class="user-name"><?php echo $user['display_name'] ?></div>
