@@ -112,7 +112,7 @@ textarea {
   align-items: center;
 }
 
-.label .label-icon{
+.label .label-icon {
   margin-right: 10px;
 }
 
@@ -126,4 +126,34 @@ textarea {
   line-height: 17px;
   font-size: 13px;
   color: #d9e1e8;
+}
+
+.toot-container {
+  background: #282c37;
+  overflow: auto;
+}
+
+.toot-container ul {
+  list-style: none;
+  padding-left: 0;
+  margin:0;
+}
+.toot-container ul li {
+  border-bottom: 1px solid #fff;
+  padding: 20px;
+
+  display: flex;
+  align-items: flex-start;
+}
+.toot-container ul li img{
+  margin-right:10px;
+  border-radius: 4px;
+}
+
+.user-container{
+  display: flex;
+  align-items: flex-start;
+}
+.user-id{
+  color: gray;
 }
