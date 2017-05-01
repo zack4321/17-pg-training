@@ -11,6 +11,7 @@ $database = getDatabase();
 $toots = $database->query("
     SELECT *
     FROM `toot`
+    ORDER BY id DESC
 ")->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
@@ -57,6 +58,9 @@ $toots = $database->query("
                         <div class="user-id">@<?php echo $user['login_name'] ?></div>
                       </div>
                       <p> <?php echo $toots[$i]['text']; ?></p>
+                      <?php if ($toots[$i]['image_file_name']){ ?>
+                        <img class="tootsimage" src="/uploaded_image/<?php echo $toots[$i]['image_file_name'];?>" >
+                      <?php } ?>
                     </div>
                   </li>
                 <?php
