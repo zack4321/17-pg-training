@@ -8,7 +8,12 @@ redirectToLoginPageIfNotLoggedIn();
 $user_login_name = $_SESSION['user_login_name'];
 
 $database = getDatabase();
+$toots = $database->query("
+    SELECT *
+    FROM `toot`
+")->fetchAll(PDO::FETCH_ASSOC);
 ?>
+
 
 <!-- 下にindex.htmlをコピペして、index.htmlを消そう！ -->
 <html>
@@ -36,16 +41,27 @@ $database = getDatabase();
             <div class="container toot-container">
                 <div class="label icon-home"><img class="label-icon" src="/img/home.png" width="15" alt="Home - ">ホーム</div>
                 <ul>
+                  <?php
+                  for ($i = 0;$i<count($toots); $i++) {
+                     $user = $database->query("
+                        SELECT *
+                        FROM `user`
+                        WHERE id = ".$toots[$i]['user_id']. "
+                    ")->fetch(PDO::FETCH_ASSOC);
+                    ?>
                   <li>
                     <img width="50" src="https://files.slack.com/files-tmb/T02541Q7U-F55EULAEB-5f5a012488/image_uploaded_from_ios_1024.jpg"/>
                     <div>
                       <div class="user-container">
-                        <div class="user-name">zack</div>
-                        <div class="user-id">@zack</div>
+                        <div class="user-name"><?php echo $user['display_name'] ?></div>
+                        <div class="user-id">@<?php echo $user['login_name'] ?></div>
                       </div>
-                      <p>Hello! Zack Japan!</p>
+                      <p> <?php echo $toots[$i]['text']; ?></p>
                     </div>
                   </li>
+                <?php
+                }
+                ?>
                 </ul>
             </div>
 
